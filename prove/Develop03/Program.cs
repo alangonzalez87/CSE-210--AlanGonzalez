@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 class Program
@@ -10,7 +8,7 @@ class Program
         Console.WriteLine("Enter a scripture reference (e.g., 'John 3:16'):");
         string referenceInput = Console.ReadLine();
 
-        // Create a Scripture object based on user input
+    
         Scripture scripture = new Scripture(referenceInput);
 
         Console.Clear();
@@ -45,13 +43,12 @@ class Scripture
     public Scripture(string reference)
     {
         this.reference = reference;
-        this.words = LoadWordsFromDatabase(); // Load words from your data source
+        this.words = LoadWordsFromDatabase(); 
     }
 
     private List<Word> LoadWordsFromDatabase()
     {
-        // Implement this method to load words based on the scripture reference.
-        // For simplicity, we'll use dummy data in this example.
+        
         return new List<Word>
         {
             new Word("For"),
