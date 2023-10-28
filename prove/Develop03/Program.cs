@@ -1,121 +1,30 @@
-using System;
-using System.Text;
+using Develop03;
 
 class Program
 {
-    static void Main()
+    static string verse = @"
+My fathers, having turned from their righteousness, and from the holy commandments which the Lord their God 
+had given unto them, unto the worshiping of the gods of the heathen, utterly refused to hearken to my voice; 
+
+For their hearts were set to do evil, and were wholly turned to the god of Elkenah, and the god of Libnah, 
+and the god of Mahmackrah, and the god of Korash, and the god of Pharaoh, king of Egypt;";
+    static string reference = "Abraham 1:5-6";
+
+    static void Main(string[] args)
     {
-        Console.WriteLine("Enter a scripture reference (e.g., 'John 3:16'):");
-        string referenceInput = Console.ReadLine();
+        // Instantiate a Scripture with a verse and reference
+        Scripture scripture = new Scripture(verse, new Reference(reference), 3);
+        string input = "";
 
-    
-        Scripture scripture = new Scripture(referenceInput);
-
-        Console.Clear();
-        scripture.DisplayWithHiddenWords();
-
-        while (!scripture.AllWordsHidden)
+        do
         {
-            Console.WriteLine("Press Enter to continue or type 'quit' to exit:");
-            string userInput = Console.ReadLine();
-
-            if (userInput == "quit")
-            {
-                break;
-            }
-
-            scripture.HideRandomWord();
+            // Clear the screen before displaying scripture
             Console.Clear();
-            scripture.DisplayWithHiddenWords();
+            // Write out scripture and verse
+            Console.Write(scripture.ToString());
+            // Get user's input
+            input = Console.ReadLine();
         }
-    }
-}
-
-class Scripture
-{
-    private string reference;
-    private List<Word> words;
-    private Random random = new Random();
-    private int hiddenWordsCount = 0;
-
-    public bool AllWordsHidden => hiddenWordsCount == words.Count;
-
-    public Scripture(string reference)
-    {
-        this.reference = reference;
-        this.words = LoadWordsFromDatabase(); 
-    }
-
-    private List<Word> LoadWordsFromDatabase()
-    {
-        
-        return new List<Word>
-        {
-            new Word("For"),
-            new Word("God"),
-            new Word("so"),
-            new Word("loved"),
-            new Word("the"),
-            new Word("world"),
-            new Word("that"),
-            new Word("He"),
-            new Word("gave"),
-            new Word("His"),
-            new Word("only"),
-            new Word("begotten"),
-            new Word("Son,"),
-            new Word("that"),
-            new Word("whoever"),
-            new Word("believes"),
-            new Word("in"),
-            new Word("Him"),
-            new Word("should"),
-            new Word("not"),
-            new Word("perish"),
-            new Word("but"),
-            new Word("have"),
-            new Word("eternal"),
-            new Word("life.")
-        };
-    }
-
-    public void HideRandomWord()
-    {
-        int randomIndex = random.Next(words.Count);
-
-        if (!words[randomIndex].IsHidden)
-        {
-            words[randomIndex].Hide();
-            hiddenWordsCount++;
-        }
-    }
-
-    public void DisplayWithHiddenWords()
-    {
-        Console.WriteLine(reference);
-        StringBuilder displayText = new StringBuilder();
-
-        foreach (var word in words)
-        {
-            displayText.Append(word.IsHidden ? "____ " : word.Text + " ");
-        }
-
-        Console.WriteLine(displayText.ToString());
-    }
-}
-
-class Word
-{
-    public string Text { get; }
-    public bool IsHidden { get; private set; }
-
-    public Word(string text)
-    {
-        Text = text;
-    }
-
-    public void Hide()
-    {
-        IsHidden = true;
+        while (!input.ToUpper().Equals("QUIT") && !scripture.isFinished());
     }
 }
