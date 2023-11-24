@@ -4,7 +4,11 @@ using System.IO;
 using System.Linq;
 class ChecklistGoal : Activity
 {
-    public ChecklistGoal(string name, int targetValue, int bonusPoints,DateTime deadline) : base(name, GoalType.Checklist, targetValue, deadline, bonusPoints,) { }
+    public ChecklistGoal(string name, int targetValue, int bonusPoints,DateTime deadline) 
+    :base(name, GoalType.Checklist, targetValue, deadline, bonusPoints) 
+    { 
+
+    }
 
     public override void UpdateProgress(int value)
     {

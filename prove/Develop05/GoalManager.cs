@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 
 class GoalManager
 {
@@ -126,19 +127,23 @@ class GoalManager
                     Activity activity = null;
 
                     switch (type)
-                    {
-                        case GoalType.Simple:
-                            activity = new SimpleGoal(values[0], int.Parse(values[2]));
-                            break;
+{   
+    case GoalType.Simple:
+        DateTime deadlineSimple = DateTime.ParseExact(values[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        activity = new SimpleGoal(values[0], int.Parse(values[2]), deadlineSimple);
+        break;
 
-                        case GoalType.Eternal:
-                            activity = new EternalGoal(values[0], int.Parse(values[2]));
-                            break;
+    case GoalType.Eternal:
+        DateTime deadlineEternal = DateTime.ParseExact(values[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        activity = new EternalGoal(values[0], int.Parse(values[2]), deadlineEternal);
+        break;
 
-                        case GoalType.Checklist:
-                            activity = new ChecklistGoal(values[0], int.Parse(values[2]), int.Parse(values[3]));
-                            break;
-                    }
+    case GoalType.Checklist:
+        DateTime deadlineChecklist = DateTime.ParseExact(values[3], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        activity = new ChecklistGoal(values[0], int.Parse(values[2]), int.Parse(values[3]), deadlineChecklist);
+        break;
+}
+
 
                     if (activity != null)
                     {

@@ -40,7 +40,7 @@ class Program
                     break;
 
                 case "5":
-                    goalManager.SaveGoals(); // Save goals before exiting
+                    goalManager.SaveGoals(); 
                     Environment.Exit(0);
                     break;
 
@@ -62,14 +62,15 @@ abstract class Activity
     public int BonusPoints { get; set; }
     public int TimesCompleted { get; set; }
 
-    public Activity(string name, GoalType type, int targetValue, int bonusPoints = 0)
-    {
-        Name = name;
-        Type = type;
-        TargetValue = targetValue;
-        BonusPoints = bonusPoints;
-        Deadline = deadline;
-    }
+    public Activity(string name, GoalType type, int targetValue, DateTime deadline, int bonusPoints = 0)
+{
+    Name = name;
+    Type = type;
+    TargetValue = targetValue;
+    BonusPoints = bonusPoints;
+    Deadline = deadline;
+}
+
 
     public DateTime Deadline { get; set; }
 

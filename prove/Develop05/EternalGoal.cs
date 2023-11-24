@@ -5,7 +5,7 @@ using System.Linq;
 
 class EternalGoal : Activity
 {
-    public EternalGoal(string name, int targetValue) : base(name, GoalType.Eternal, targetValue, DateTime deadline) { }
+   public EternalGoal(string name, int targetValue, DateTime deadline) : base(name, GoalType.Eternal, targetValue, DateTime.MaxValue) { }
 
     public override void UpdateProgress(int value)
     {
