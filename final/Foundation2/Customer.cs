@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+class Customer
+{
+    public string Name { get; }
+    public Address Address { get; }
+
+    public Customer(string name, Address address)
+    {
+        Name = name;
+        Address = address;
+    }
+
+    public bool IsUsCustomer()
+    {
+        return Address.IsUs();
+    }
+}
