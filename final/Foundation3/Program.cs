@@ -60,9 +60,9 @@ class Program
 {
     static void Main()
     {
-        Lecture lectureEvent = new Lecture("AI Conference", "Exciting talks on AI", DateTime.Now, new TimeSpan(14, 0, 0), "123 Main St", "John Doe", 100);
-        Reception receptionEvent = new Reception("Networking Night", "Casual networking event", DateTime.Now, new TimeSpan(18, 0, 0), "456 Center St", "rsvp@example.com");
-        OutdoorGathering outdoorEvent = new OutdoorGathering("Summer BBQ", "Enjoy the sun and food", DateTime.Now, new TimeSpan(12, 0, 0), "789 Park Ave", "Sunny and warm!");
+        Lecture lectureEvent = new Lecture("AI Conference", "Exciting talks on AI", DateTime.Now, new TimeSpan(14, 0, 0), "123 Mardel plata", "Alan Gonzalez", 100);
+        Reception receptionEvent = new Reception("Networking Night", "Casual networking event", DateTime.Now, new TimeSpan(18, 0, 0), "223 Buenos aires St", "Alan@example.com");
+        OutdoorGathering outdoorEvent = new OutdoorGathering("Summer BBQ", "Enjoy the sun and food", DateTime.Now, new TimeSpan(12, 0, 0), "345 Parque Primavessi", "Sunny and warm!");
 
         Console.WriteLine("Standard Details:\n");
         Console.WriteLine(lectureEvent.GenerateStandardDetails());
